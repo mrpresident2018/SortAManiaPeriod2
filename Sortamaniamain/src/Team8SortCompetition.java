@@ -167,8 +167,14 @@ public class Team8SortCompetition extends SortCompetition
 	public int challengeThree(int[] arr) 
 	{
 		insertionSort(arr);
-		int m = arr[arr.length/2-1];
-		return m;
+		if(arr.length%2==1)
+		{
+			return(arr[arr.length/2-1]);
+		}
+		else
+		{
+			return((arr[arr.length/2]+arr[arr.length/2-1])/2);
+		}
 	}
 
 	@Override
@@ -184,8 +190,14 @@ public class Team8SortCompetition extends SortCompetition
 		}
 		quickSort(meds, 0, meds.length-1);
 		
-		return(meds[meds.length/2-1]);
-		
+		if(arr.length%2==1)
+		{
+			return(meds[meds.length/2-1]);
+		}
+		else
+		{
+			return((meds[meds.length/2]+meds[meds.length/2-1])/2);
+		}
 	}
 
 	@Override
