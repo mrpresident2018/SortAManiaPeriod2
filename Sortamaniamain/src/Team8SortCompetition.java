@@ -198,6 +198,7 @@ public class Team8SortCompetition extends SortCompetition
 		{
 			return((meds[meds.length/2]+meds[meds.length/2-1])/2);
 		}
+		
 	}
 
 	@Override
