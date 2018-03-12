@@ -75,16 +75,6 @@ public class Team8SortCompetition extends SortCompetition
 			quickSort(list1, p + 1, back);
 		}
 	}
-	
-	public static void quickSort(int[] list1, int front, int back) 
-	{
-		if (front < back) 
-		{
-			int p = partition(list1, front, back);
-			quickSort(list1, front, p - 1);
-			quickSort(list1, p + 1, back);
-		}
-	}
 	public static void quickSort(Comparable[] list1, int front, int back) 
 	{
 		if (front < back) 
@@ -94,6 +84,35 @@ public class Team8SortCompetition extends SortCompetition
 			quickSort(list1, p + 1, back);
 		}
 	}
+	public static void quickSort(String arr[], int front, int back)
+
+	 {
+		if (front >= back)
+		{
+			return;
+		}
+		else
+		{
+			int a = partition(arr, front, back);
+			quickSort(arr, front, a);
+			quickSort(arr, a + 1, back);
+		}
+	 }
+	public static int partition(String[] list, int front, int back)
+	{
+		String a = list[front];
+		int i = front;
+		for (int j = front + 1; j < back; j++)
+		{
+			if (list[j].compareTo(a)<= 0)
+			{
+				i++;
+				swap(list, i, j);
+			}
+		}
+		swap(list, i, front);
+		return i;
+	}			
 	public static int partition(int[] list, int front, int back) 
 	{
 		
@@ -132,21 +151,26 @@ public class Team8SortCompetition extends SortCompetition
 		list[i] = pivot;
 		return i;
 	}
+	private static void swap(String[] a, int i, int j)
+	{
+	    String temp = a[i];
+	    a[i] = a[j];
+	    a[j] = temp;
+	}
 	@Override
 	public int challengeOne(int[] arr) 
 	{
-		int a = arr.length/2;
-		int b = 0;
 		quickSort(arr, 0, arr.length-1);
-		if (arr.length % 2 == 1)
+		int a;
+		if (arr.length%2==0)
 		{
-			b = arr[((arr.length - 1) / 2 ) +1];
+			a = ((arr[(arr.length/2) - 1] + arr[arr.length/2])/2);
 		}
-		else 
+		else
 		{
-			b = (arr[a] + arr[a+1])/2;
+			a = arr[arr.length/2];
 		}
-		return (b);
+		return a;
 	}
 
 	@Override
@@ -155,7 +179,7 @@ public class Team8SortCompetition extends SortCompetition
 		mergeSort(arr);
 		for (int i = 0; i < arr.length; i++) 
 		{
-			if (arr.equals(query)) 
+			if (query.equals(arr[i])) 
 			{
 			return i;
 			}
