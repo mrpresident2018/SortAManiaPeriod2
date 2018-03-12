@@ -235,6 +235,7 @@ public class Team8SortCompetition extends SortCompetition
 			}
 		}
 		return -1;
+		
 	}
 
 	@Override
